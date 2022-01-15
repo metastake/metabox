@@ -1,0 +1,15 @@
+---
+include:
+  - project: 'metastake/skeleton-pipeline'
+    ref: v1.0.1
+    file: '/docker.yml'
+
+stages:
+  - publish
+
+variables:
+  TAG: $CI_COMMIT_TAG
+
+dockerize:
+  only:
+    - tags
