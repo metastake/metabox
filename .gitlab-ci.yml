@@ -1,11 +1,11 @@
 ---
 include:
   - project: 'metastake/skeleton-pipeline'
-    ref: v1.0.1
+    ref: v1.1.1
     file: '/docker.yml'
-
-stages:
-  - publish
+  - project: 'metastake/skeleton-pipeline'
+    ref: v1.1.1
+    file: '/security.yml'
 
 variables:
   TAG: $CI_COMMIT_TAG
