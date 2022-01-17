@@ -7,6 +7,10 @@ include:
     ref: v1.1.1
     file: '/security.yml'
 
+stages:
+  - publish
+  - security
+
 variables:
   TAG: $CI_COMMIT_TAG
 
