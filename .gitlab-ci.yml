@@ -17,3 +17,7 @@ variables:
 dockerize:
   only:
     - tags
+
+container_scanning:
+  only:
+    - tags
