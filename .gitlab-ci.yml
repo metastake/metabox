@@ -1,15 +1,24 @@
 ---
 include:
   - project: 'metastake/skeleton-pipeline'
-    ref: v1.0.1
+    ref: v1.1.1
     file: '/docker.yml'
+  - project: 'metastake/skeleton-pipeline'
+    ref: v1.1.1
+    file: '/security.yml'
+
+variables:
+  DOCKER_IMAGE: ${DOCKER_USERNAME}/${CI_PROJECT_NAME}:${CI_COMMIT_TAG}
+  DOCKER_BUILD_ARGS: ""
 
 stages:
   - publish
-
-variables:
-  TAG: $CI_COMMIT_TAG
+  - security
 
 dockerize:
   only:
     - tags
+
+container_scanning:
+  rules:
+    - if: $CI_COMMIT_TAG
